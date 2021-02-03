@@ -90,8 +90,8 @@ def get_provider_settings(req: dict, provider_key: str) -> Tuple[dict, dict]:
 
     urls = build_sp_urls(req, provider_key)
     # TODO: Skip if already defined in config
-    provider_settings["sp"]["entityId"] = urls["entityId"]
-    provider_settings["sp"]["assertionConsumerService"]["url"] = urls["acs_url"]
+    # provider_settings["sp"]["entityId"] = urls["entityId"]
+    # provider_settings["sp"]["assertionConsumerService"]["url"] = urls["acs_url"]
     return provider_settings, user_map
 
 
