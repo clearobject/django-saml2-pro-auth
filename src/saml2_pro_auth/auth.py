@@ -59,9 +59,13 @@ class Backend:  # pragma: no cover
             return None
 
         assertion_id = saml_auth.get_last_assertion_id()
-        not_on_or_after = datetime.fromtimestamp(
-            saml_auth.get_last_assertion_not_on_or_after(), tz=timezone.utc
-        )
+        if not_on_or_after_timestamp := saml_auth.get_last_assertion_not_on_or_after:
+            not_on_or_after = datetime.fromtimestamp(
+                not_on_or_after_timestamp, tz=timezone.utc
+            )
+        else:
+            not_on_or_after = datetime.now(tz=timezone.utc)
+
         assertion_timeout = not_on_or_after - datetime.now(tz=timezone.utc)
 
         if app_settings.SAML_REPLAY_PROTECTION:
