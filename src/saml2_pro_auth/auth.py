@@ -59,7 +59,7 @@ class Backend:  # pragma: no cover
             return None
 
         assertion_id = saml_auth.get_last_assertion_id()
-        if not_on_or_after_timestamp := saml_auth.get_last_assertion_not_on_or_after:
+        if not_on_or_after_timestamp := saml_auth.get_last_assertion_not_on_or_after():
             not_on_or_after = datetime.fromtimestamp(
                 not_on_or_after_timestamp, tz=timezone.utc
             )
